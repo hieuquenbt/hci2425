@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        /* Basic reset for consistent styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin: 20px 0;
+            font-size: 2.5rem;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"], 
+        input[type="password"], 
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .profile-picture {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-picture img {
+            max-width: 100px;
+            margin-left: 10px;
+            border-radius: 50%;
+        }
+
+        .readonly {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        /* Custom file upload button */
+        .custom-file-upload {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .custom-file-upload:hover {
+            background-color: whitesmoke;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create Account</h1>
+    
+    <form id="userForm">
+        <!-- Username -->
+        <p>
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your username" required>
+            <span class="error" id="usernameError"></span>
+        </p>
+
+        <!-- Password -->
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+        </p>
+
+        <!-- Email -->
+        <p>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <span class="error" id="emailError"></span>
+        </p>
+
+        <!-- Role Dropdown -->
+        <p>
+            <label for="role">Role:</label>
+            <select id="role" required>
+                <option value="">Select your role</option>
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+                <!-- You can add more roles here -->
+            </select>
+        </p>
+
+        <!-- Profile Picture -->
+        <p class="profile-picture">
+            <label>Profile Picture:</label>
+            <label for="profilePic" class="custom-file-upload">Choose Image</label>
+            <input type="file" id="profilePic" accept="image/*">
+            <img id="profilePreview" src="" alt="Profile Picture Preview" style="display:none;">
+        </p>
+
+        <!-- Account Created At (Read-Only) -->
+        <p>
+            <label>Account Created At:</label>
+            <div class="readonly" id="createdAt">2024-09-28</div>
+        </p>
+
+        <!-- Last Updated At (Read-Only) -->
+        <p>
+            <label>Last Updated At:</label>
+            <div class="readonly" id="updatedAt">2024-09-28</div>
+        </p>
+
+        <!-- Submit Button -->
+        <p>
+            <button type="submit" id="submitBtn" disabled>Create Account</button>
+        </p>
+
+        <!-- Cancel Button -->
+        <p>
+            <button type="button" onclick="cancelForm()">Cancel</button>
+        </p>
+    </form>
+
+    <script>
+        // Profile picture preview
+        const profilePicInput = document.getElementById('profilePic');
+        const profilePreview = document.getElementById('profilePreview');
+
+        profilePicInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profilePreview.src = e.target.result;
+                    profilePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Form validation and enabling the submit button
+        const form = document.getElementById('userForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('input', function() {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const role = document.getElementById('role').value;
+
+            // Basic validation logic
+            const isFormValid = username && email && role;
+            submitBtn.disabled = !isFormValid;
+
+            // Inline error handling
+            document.getElementById('usernameError').innerText = username.length < 4 ? 'Username is too short' : '';
+            document.getElementById('emailError').innerText = !validateEmail(email) ? 'Invalid email format' : '';
+        });
+
+        // Email validation helper function
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        // Cancel form action
+        function cancelForm() {
+            window.history.back();  // Go back to the previous page
+        }
+    </script>
+</body>
+</html>
