@@ -1,0 +1,37 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all the menu links
+    const menuLinks = document.querySelectorAll('.menuBar a');
+    
+    // Function to switch sections
+    function switchSection(sectionId) {
+        // Get all sections
+        const sections = document.querySelectorAll('section');
+        
+        // Hide all sections
+        sections.forEach(function(section) {
+            section.classList.remove('active');
+        });
+        
+        // Show the target section
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.classList.add('active');
+        }
+    }
+    
+    // Add event listeners to each menu link
+    menuLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default anchor behavior
+            
+            // Get the target section from the data attribute
+            const sectionId = link.getAttribute('data-section');
+            
+            // Switch to the corresponding section
+            switchSection(sectionId);
+        });
+    });
+    
+    // Initially display the "home" section
+    switchSection('home');
+});

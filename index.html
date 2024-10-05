@@ -1,31 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Menu Navigation with Nested Tabs</title>
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="menuBar">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        
-        <!-- Labs menu with a dropdown -->
-        <div class="dropdown">
-            <a href="#" class="dropbtn" style="pointer-events: none;">Labs</a> <!-- Disable Labs Button -->
-            <div class="dropdown-content">
-                <a href="lab1.html">Lab 1</a>
-                <a href="lab2.html">Lab 2</a>
-                <a href="lab3.html">Lab 3</a>
-                <a href="lab4.html">Lab 4</a>
-                <a href="lab5.html">Lab 5</a>
-                <a href="lab6.html">Lab 6</a>
-                <a href="lab7.html">Lab 7</a>
-                <a href="lab8.html">Lab 8</a>
-                <a href="lab9.html">Lab 9</a>
+    <nav>
+        <ul class="menu">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#" id="labs-link">Labs</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-area">
+        <div class="labs-section" id="labs-section">
+            <div class="labs-tabs">
+                <button class="lab-tab active" data-tab="lab1">Lab 1</button>
+                <button class="lab-tab" data-tab="lab2">Lab 2</button>
+                <button class="lab-tab" data-tab="lab3">Lab 3</button>
+                <button class="lab-tab" data-tab="lab4">Lab 4</button>
+                <button class="lab-tab" data-tab="lab5">Lab 5</button>
+                <button class="lab-tab" data-tab="lab6">Lab 6</button>
+                <button class="lab-tab" data-tab="lab7">Lab 7</button>
+                <button class="lab-tab" data-tab="lab8">Lab 8</button>
+                <button class="lab-tab" data-tab="lab9">Lab 9</button>
+            </div>
+            <div class="lab-content active" id="lab1">
+                <h2>Lab 1</h2>
+                <p>Nội dung của Lab 1 sẽ hiển thị ở đây...</p>
+            </div>
+            <div class="lab-content" id="lab2">
+                <h2>Lab 2</h2>
+                <p>Nội dung của Lab 2 sẽ hiển thị ở đây...</p>
+            </div>
+            <div class="lab-content" id="lab3">
+                <h2>Lab 3</h2>
+                <p>Nội dung của Lab 3 sẽ hiển thị ở đây...</p>
+            </div>
+            <div class="lab-content" id="lab4">
+                <h2>Lab 4</h2>
+                <p>Nội dung của Lab 4 sẽ hiển thị ở đây...</p>
+            </div>
+            <div class="lab-content" id="lab5">
+                <h2>Lab 5</h2>
+                <p>Nội dung của Lab 5 sẽ hiển thị ở đây...</p>
+            </div>
+            <div class="lab-content" id="lab6">
+                <h2>Lab 6</h2>
+                <p>Nội dung của Lab 6 sẽ hiển thị ở đây...</p>
+            </div>
+            <div class="lab-content" id="lab7">
+                <h2>Lab 7</h2>
+                <p>Nội dung của Lab 7 sẽ hiển thị ở đây...</p>
+            </div>
+            <div class="lab-content" id="lab8">
+                <h2>Lab 8</h2>
+                <p>Nội dung của Lab 8 sẽ hiển thị ở đây...</p>
+            </div>
+            <div class="lab-content" id="lab9">
+                <h2>Lab 9</h2>
+                <p>Nội dung của Lab 9 sẽ hiển thị ở đây...</p>
             </div>
         </div>
     </div>
+
+    <script>
+        // Main menu handling
+        const menuItems = document.querySelectorAll('.menu li a');
+        const labsSection = document.getElementById('labs-section');
+        const labsLink = document.getElementById('labs-link');
+        
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                menuItems.forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+                
+                if (this === labsLink) {
+                    labsSection.classList.add('show');
+                } else {
+                    labsSection.classList.remove('show');
+                }
+            });
+        });
+
+        // Lab tabs handling
+        const labTabs = document.querySelectorAll('.lab-tab');
+        const labContents = document.querySelectorAll('.lab-content');
+
+        labTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs and contents
+                labTabs.forEach(tab => tab.classList.remove('active'));
+                labContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>

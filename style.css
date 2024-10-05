@@ -1,71 +1,149 @@
-/* General menu bar styling */
-.menuBar {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+}
+
+nav {
+    background-color: #2c3e50;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.menu {
     display: flex;
-    justify-content: left;
-    background-color: #000;
-    height: 60px;
-    align-items: center;
+    list-style: none;
+    gap: 2rem;
+    justify-content: center;
 }
 
-.menuBar a {
+.menu li a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
-    margin: 0 20px;
-    padding: 10px 0;
-    font-family: Arial, sans-serif;
-}
-
-.menuBar a:hover {
-    color: #ff6347;
-}
-
-/* Dropdown container */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Dropdown button */
-.dropbtn {
-    color: white;
-    background-color: #000;
-    padding: 10px;
-    text-decoration: none;
-    font-size: 18px;
-    border: none;
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #333;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
     font-size: 16px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #575757;
+.menu li a:hover {
+    background-color: #34495e;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+.menu li a.active {
+    background-color: #3498db;
+}
+
+.content-area {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.labs-section {
+    display: none;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.labs-section.show {
     display: block;
 }
 
-/* Change the Labs menu color on hover */
-.dropdown:hover .dropbtn {
-    color: #ff6347;
+.labs-tabs {
+    display: flex;
+    background-color: #f8f9fa;
+    padding: 15px 15px 0;
+    border-radius: 8px 8px 0 0;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.lab-tab {
+    padding: 12px 24px;
+    cursor: pointer;
+    background-color: #e9ecef;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    color: #495057;
+    transition: all 0.3s ease;
+}
+
+.lab-tab:hover {
+    background-color: #dee2e6;
+}
+
+.lab-tab.active {
+    background-color: white;
+    color: #3498db;
+    font-weight: 500;
+    position: relative;
+}
+
+.lab-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: white;
+}
+
+.lab-content {
+    padding: 30px;
+    display: none;
+}
+
+.lab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.lab-content h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.lab-content p {
+    color: #34495e;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .labs-tabs {
+        padding: 10px 10px 0;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    .lab-tab {
+        padding: 10px 15px;
+        white-space: nowrap;
+    }
+
+    .lab-content {
+        padding: 20px;
+    }
 }
