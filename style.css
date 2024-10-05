@@ -1,0 +1,71 @@
+/* General menu bar styling */
+.menuBar {
+    display: flex;
+    justify-content: left;
+    background-color: #000;
+    height: 60px;
+    align-items: center;
+}
+
+.menuBar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 20px;
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
+}
+
+.menuBar a:hover {
+    color: #ff6347;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown button */
+.dropbtn {
+    color: white;
+    background-color: #000;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    border: none;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #575757;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the Labs menu color on hover */
+.dropdown:hover .dropbtn {
+    color: #ff6347;
+}
