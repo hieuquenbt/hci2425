@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Navigation with Nested Tabs</title>
+    <title>hci2425</title>
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -15,36 +15,40 @@
             <li><a href="#" id="labs-link">Labs</a></li>
         </ul>
     </nav>
-
+    <div class="homePage lab-content active" id="homePage">
+        <h1>Welcome to Hieu's labs</h1>
+        <p>Where I prepare my Labs</p>
+    </div>
  
 
    <div class="about-div">
-    <iframe id="main-iframe" src="about.html" width="70%" height="400px"></iframe>
+         <div id="main-iframe" class="in-about">
+            <iframe class="in-about" src="about.html" width="60%" height="350px"></iframe>
+         </div>
    </div>
-
+   <div class="secondary-nav" id="secondary-nav">
+    <a href="lab1.html" onclick="showPage('html')" target="_blank">Lab1</a>
+    <a href="lab2/login.html" onclick="showPage('css')" target="_blank">Lab2</a>
+    <a href="#javascript" onclick="showPage('javascript')" target="_blank">Lab3</a>
+    <a href="#sql" onclick="showPage('sql')" target="_blank">Lab4</a>
+    <a href="#python" onclick="showPage('python')" target="_blank">Lab4</a>
+    <a href="#java" onclick="showPage('java')" target="_blank">Lab5</a>
+    <a href="#php" onclick="showPage('php')" target="_blank">Lab6</a>
+    <a href="#howto" onclick="showPage('howto')" target="_blank">Lab7</a>
+    <a href="#w3css" onclick="showPage('w3css')" target="_blank">Lab8</a>
+    <a href="#c" onclick="showPage('c')" target="_blank">Lab9</a>
+</div>
     <div class="labs-section" id="labs-section" style="display:none;">
-        <div class="labs-tabs">
-            <button class="lab-tab active" data-tab="lab1">Lab 1</button>
-            <button class="lab-tab" data-tab="lab2">Lab 2</button>
-            <button class="lab-tab" data-tab="lab3">Lab 3</button>
-            <button class="lab-tab" data-tab="lab4">Lab 4</button>
-            <button class="lab-tab" data-tab="lab5">Lab 5</button>
-            <button class="lab-tab" data-tab="lab6">Lab 6</button>
-            <button class="lab-tab" data-tab="lab7">Lab 7</button>
-            <button class="lab-tab" data-tab="lab8">Lab 8</button>
-            <button class="lab-tab" data-tab="lab9">Lab 9</button>
-        </div>
-        <div class="lab-content active" id="lab1">
+        
+       
+        <div class="labF-content active" id="lab1">
             <h2>Lab 1</h2>
             <div class="about-div">
                 <iframe src="lab1.html" width="60%" height="350px"></iframe>
             </div>
         </div>
-        <div class="lab-content" id="lab2">
-            <h2>Lab 2</h2>
-            <p>Nội dung của Lab 2 sẽ hiển thị ở đây...</p>
-        </div>
-        <!-- other lab contents -->
+       
+       
     </div>
 
     <script src="script.js"></script>

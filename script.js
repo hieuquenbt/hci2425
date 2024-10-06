@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     switchSection('home');
 });
  // Main menu handling
+const homePage = document.getElementById('homePage');
  const menuItems = document.querySelectorAll('.menu li a');
  const labsSection = document.getElementById('labs-section');
  const labsLink = document.getElementById('labs-link');
@@ -43,7 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
  const homeLink = document.getElementById('home-link');
  const iframe = document.getElementById('main-iframe');
  const labButtons = document.getElementById('lab-buttons');
+ const secondMenu = document.getElementById('secondary-nav');
  iframe.style.display = 'none';
+ secondMenu.style.display = 'none';
+ homePage.style.display = 'block'
  menuItems.forEach(item => {
      item.addEventListener('click', function(event) {
          event.preventDefault();
@@ -51,21 +55,29 @@ document.addEventListener('DOMContentLoaded', function() {
          // Remove active class from all menu items
          menuItems.forEach(item => item.classList.remove('active'));
          this.classList.add('active');
-        
+         
          if (this === labsLink) {
+            homePage.style.display = 'none';
+             secondMenu.style.display = 'flex';
              labsSection.style.display = 'block';  // Show labs section
              iframe.style.display = 'none';  // Hide iframe when labs section is shown
              labButtons.style.display = 'flex';  // Show lab buttons
-         } else if (this === aboutLink) {
+         } else if (this === aboutLink) {          
+            homePage.style.display = 'none';  
+            secondMenu.style.display = 'none';
              labsSection.style.display = 'none';  // Hide labs section when About is shown
              iframe.src = 'about.html';
              iframe.style.display = 'block';  // Show iframe for About page
              labButtons.style.display = 'none';  // Hide lab buttons
          } else if (this === homeLink) {
-             labsSection.style.display = 'none';  // Hide labs section when Home is shown
-             iframe.src = 'home.html';  // You can set a Home page or keep it empty
-             iframe.style.display = 'block';  // Show iframe for Home page
+           
+            homePage.style.display = 'block';
+             secondMenu.style.display = 'none';
+             labsSection.style.display = 'none'; 
+             iframe.style.display = 'none';  // Show iframe for Home page
              labButtons.style.display = 'none';  // Hide lab buttons
+             secondMenu.style.display = 'none';
+            
          }
      });
  });
@@ -87,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
      });
  });
 
-    // lab1 js
+    // LAB1 JS
       // Profile picture preview
       const profilePicInput = document.getElementById('profilePic');
       const profilePreview = document.getElementById('profilePreview');

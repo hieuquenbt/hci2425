@@ -205,5 +205,41 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    animation: fadeIn 0.3s ease;
 }
+.in-about {
+    width: 100%;
+    max-width: 800px;
+}
+.secondary-nav {
+    display: flex;
+    background-color:  white;
+    padding: 5px;
+    overflow-x: auto;
+}
+.secondary-nav a{
+    text-decoration: none;
+    border-radius: 5px;
+   color: black;
+   padding: 8px 16px;
+}
+.secondary-nav a:hover{
+    background-color:  #495057;
+    
+ }
+ .homePage {
+    margin-left: 20%;
+    padding: 50px;
+ }
+ .iframe-posi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+    width: 350px;
+    height: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+ }
 
