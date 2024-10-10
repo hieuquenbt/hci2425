@@ -1,3 +1,86 @@
+
+
+// Monaco Editor configuration
+require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.43.0/min/vs' }});
+require(['vs/editor/editor.main'], function() {
+    window.editor = monaco.editor.create(document.getElementById('editor'), {
+        value: [
+            'import java.io.*;',
+            'import java.util.*;',
+            '',
+            'public class Solution {',
+            '    public static void main(String[] args) {',
+            '        /* Enter your code here. Read input from STDIN. Print output to STDOUT.',
+            '           Your class should be named Solution. */',
+            '    }',
+            '}'
+        ].join('\n'),
+        language: 'java',
+        theme: 'vs-light',
+        minimap: { enabled: true },
+        automaticLayout: true,
+        fontSize: 14,
+        lineNumbers: 'on',
+        roundedSelection: false,
+        scrollBeyondLastLine: false,
+        readOnly: false,
+        cursorStyle: 'line',
+        matchBrackets: 'always'
+    });
+});
+
+// Editor functions
+function resetCode() {
+    if (window.editor) {
+        editor.setValue([
+            'import java.io.*;',
+            'import java.util.*;',
+            '',
+            'public class Solution {',
+            '    public static void main(String[] args) {',
+            '        /* Enter your code here. Read input from STDIN. Print output to STDOUT.',
+            '           Your class should be named Solution. */',
+            '    }',
+            '}'
+        ].join('\n'));
+    }
+}
+
+function runCode() {
+    const code = window.editor.getValue();
+    console.log('Running code:', code);
+    let a = document.getElementById('rightPanel');
+    a.classList.remove("hidden");
+}
+
+function testCode() {
+    const code = window.editor.getValue();
+    console.log('Testing code with custom input:', code);
+    // Implement your test code logic here
+}
+
+function submitCode() {
+    const code = window.editor.getValue();
+    console.log('Running code:', code);
+    let a = document.getElementById('rightPan  el');
+    a.classList.remove("hidden");
+}
+
+// Language change handler
+document.getElementById('language-select').addEventListener('change', function(e) {
+    if (window.editor) {
+        monaco.editor.setModelLanguage(editor.getModel(), e.target.value);
+    }
+});
+
+// show 
+document.getElementById("toggleButton").addEventListener("click", function() {
+    var div = document.getElementById("codeEnviroment");
+    div.classList.toggle("hidden");
+  });
+
+
+
 // Google Sign-In
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
@@ -46,3 +129,4 @@ function handleLogin(event) {
     console.log('Login:', { email, password });
     // Thêm logic xử lý đăng nhập ở đây
 }
+
