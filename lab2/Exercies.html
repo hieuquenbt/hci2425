@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Code Editor</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.43.0/min/vs/loader.js"></script>
+    </head>
+    <body class="bg-gray-200">
+        <!-- Top Navigation Bar -->
+        <div class="bg-gray-200 p-2 flex flex-wrap justify-center gap-2 sm:justify-start">
+            <div class="w-full sm:w-auto flex justify-center sm:justify-start gap-2">
+                <a class="p-2 bg-gray-300 text-black rounded-md flex items-center gap-1 hover:bg-gray-400"
+                href="ChooseExercies.html">
+                    <span>Back</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                        <path fill-rule="evenodd" d="M7.793 2.232a.75.75 0 0 1-.025 1.06L3.622 7.25h10.003a5.375 5.375 0 0 1 0 10.75H10.75a.75.75 0 0 1 0-1.5h2.875a3.875 3.875 0 0 0 0-7.75H3.622l4.146 3.957a.75.75 0 0 1-1.036 1.085l-5.5-5.25a.75.75 0 0 1 0-1.085l5.5-5.25a.75.75 0 0 1 1.06.025Z" clip-rule="evenodd" />
+                      </svg>
+                      
+                    </a>
+                <button class="p-2 bg-green-500 text-white rounded-md flex items-center gap-1 hover:bg-green-600" onclick="runcode()">
+                    <span>Submit</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                        <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 0 1-1.44-8.765 4.5 4.5 0 0 1 8.302-3.046 3.5 3.5 0 0 1 4.504 4.272A4 4 0 0 1 15 17H5.5Zm3.75-2.75a.75.75 0 0 0 1.5 0V9.66l1.95 2.1a.75.75 0 1 0 1.1-1.02l-3.25-3.5a.75.75 0 0 0-1.1 0l-3.25 3.5a.75.75 0 1 0 1.1 1.02l1.95-2.1v4.59Z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <button class="p-2 bg-gray-300 rounded-md flex items-center gap-1 hover:bg-gray-400" onclick="runcode()">
+                    <span>Run</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                        <path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.344-5.891a1.5 1.5 0 0 0 0-2.538L6.3 2.841Z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-2 h-[calc(100vh-4rem)] p-2 gap-2">
+            <!-- Left Panel - Instructions -->
+            <div class="bg-white rounded-md overflow-auto lg:row-span-2">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold mb-4">Description example</h3>
+                    <p>Implement a function that generates the Fibonacci sequence...</p>
+
+                    <h4 class="font-bold mt-4">Input Format</h4>
+                    <p>A single integer n (1 ≤ n ≤ 45)</p>
+
+                    <h4 class="font-bold mt-4">Output Format</h4>
+                    <p>The first n numbers in the Fibonacci sequence</p>
+
+                    <h4 class="font-bold mt-4">Constraints</h4>
+                    <ul class="list-disc pl-4">
+                        <li>Time limit: 1 second</li>
+                        <li>Memory limit: 256 MB</li>
+                    </ul>
+
+                    <button class="mt-4 px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 w-full sm:w-auto">
+                        Hint (2/3)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Code Editor Area -->
+            <div class="bg-white rounded-md lg:col-span-2 flex flex-col">
+                <div class="bg-gray-50 p-2 sm:p-4 flex flex-wrap gap-2 justify-between items-center border-b border-gray-200">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button class="text-blue-600 hover:text-blue-700 text-sm">Change Theme</button>
+                        <span class="text-gray-600 text-sm">Language:</span>
+                        <select id="language-select" class="bg-white text-gray-800 border border-gray-300 rounded px-2 py-1 text-sm">
+                            <option value="java">Java 15</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button class="p-2 hover:bg-gray-200 rounded" onclick="resetCode()">
+                            <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="editor" class="h-[300px] sm:h-[400px] "></div>
+            </div>
+
+            <!-- Bottom Panel - Test Cases -->
+            <div class="bg-white rounded-md lg:col-span-2 overflow-auto">
+                <div id="rightPanel" class="hidden">
+                    <div class="border-l flex flex-col h-full">
+                        <div class="p-4 border-b">
+                            <h3 class="font-bold mb-4">Test Cases</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-green-100 rounded">
+                                    <div class="flex flex-wrap justify-between items-center mb-2 gap-2">
+                                        <span class="font-medium">Test Case #1</span>
+                                        <span class="text-green-600">Passed</span>
+                                    </div>
+                                    <div class="text-sm space-y-1">
+                                        <p><strong>Input:</strong> 5</p>
+                                        <p><strong>Expected:</strong> [0, 1, 1, 2, 3]</p>
+                                        <p><strong>Output:</strong> [0, 1, 1, 2, 3]</p>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-red-100 rounded">
+                                    <div class="flex flex-wrap justify-between items-center mb-2 gap-2">
+                                        <span class="font-medium">Test Case #2</span>
+                                        <span class="text-red-600">Failed</span>
+                                    </div>
+                                    <div class="text-sm space-y-1">
+                                        <p><strong>Input:</strong> 7</p>
+                                        <p><strong>Expected:</strong> [0, 1, 1, 2, 3, 5, 8]</p>
+                                        <p><strong>Output:</strong> [0, 1, 1, 2, 3, 5, 7]</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-gray-50 mt-auto">
+                            <h4 class="font-bold mb-2">Performance</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span>Run time:</span>
+                                    <span>0.15s</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Memory used:</span>
+                                    <span>24.5 MB</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Test cases passed:</span>
+                                    <span>1/2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button>
+                        <a class="p-2 bg-green-500 text-white rounded-md flex items-center gap-1 hover:bg-green-600 m-3"
+                        href="ChooseExercies.html">
+                            <span>Try Again</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                                <path fill-rule="evenodd" d="M2 10a8 8 0 1 1 16 0 8 8 0 0 1-16 0Zm6.39-2.908a.75.75 0 0 1 .766.027l3.5 2.25a.75.75 0 0 1 0 1.262l-3.5 2.25A.75.75 0 0 1 8 12.25v-4.5a.75.75 0 0 1 .39-.658Z" clip-rule="evenodd" />
+                              </svg>
+                              
+                            </a>
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+
+        <script src="script.js">
+            
+        </script>
+    </body>
+</html>

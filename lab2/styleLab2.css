@@ -30,8 +30,9 @@ body {
 
 .login-header h1 {
   color: #1a73e8;
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 .login-form {

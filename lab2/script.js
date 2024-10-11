@@ -46,7 +46,7 @@ function resetCode() {
     }
 }
 
-function runCode() {
+function runcode() {
     const code = window.editor.getValue();
     console.log('Running code:', code);
     let a = document.getElementById('rightPanel');
