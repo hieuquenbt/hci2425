@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Interface with DOCX Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <div class="flex flex-col md:flex-row gap-4">
+            <!-- Lessons Tabs -->
+            <div class="w-full md:w-1/4 bg-white rounded-lg shadow-md p-4 lg:h-screen">
+                <h2 class="text-2xl font-bold mb-4">Lessons</h2>
+                <div class="flex flex-col">
+                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'introduction')">1. Introduction</button>
+                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'setup')">2. Setting Up the Development Environment</button>
+                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'django-basic')">3. Django Basic</button>
+                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'django-advanced')">4. Django Advanced Concepts</button>
+                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'pythonanywhere')">9. Pythonanywhere</button>
+                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'syllabus')">Syllabus</button>
+                </div>
+            </div>
+            
+            <!-- Lesson Content -->
+            <div class="w-full md:w-3/4 bg-white rounded-lg shadow-md p-4 lg:h-screen">
+                <!-- Tab content will be loaded here -->
+                <div id="tabContent" class="mt-4">
+                    <iframe src="docs/Ôn tập PLĐC.pdf" class="w-full h-96 lg:h-[550px]" id="docxViewer" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="p-2 bg-blue-500 rounded-md">
+                    <a href="share.html">Back to list</a>
+            </button>
+       </div>
+    </div>
+    
+    <script>
+        // Đường dẫn của các iframe cho từng tab
+        const tabContents = {
+            introduction: "docs/Ôn tập PLĐc.pdf",
+            setup: "docs/trắc nghiệm theo chương.pdf",
+            'django-basic': "docs/django-basic.pdf",
+            'django-advanced': "docs/django-advanced.pdf",
+            pythonanywhere: "docs/pythonanywhere.pdf",
+            syllabus: "docs/syllabus.pdf",
+        };
+
+        function changeTab(event, tabName) {
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => button.classList.remove('bg-blue-500', 'text-white'));
+            
+            // Add active class to clicked button
+            event.currentTarget.classList.add('bg-blue-500', 'text-white');
+            
+            // Update iframe source based on the selected tab
+            const iframe = document.getElementById('docxViewer');
+            iframe.src = tabContents[tabName] || "about:blank";
+        }
+    </script>
+</body>
+</html>
