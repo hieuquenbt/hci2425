@@ -13,11 +13,11 @@
             <div class="w-full md:w-1/4 bg-white rounded-lg shadow-md p-4 lg:h-screen">
                 <h2 class="text-2xl font-bold mb-4">Lessons</h2>
                 <div class="flex flex-col">
-                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'introduction')">1. Introduction</button>
-                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'setup')">2. Setting Up the Development Environment</button>
-                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'django-basic')">3. Django Basic</button>
-                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'django-advanced')">4. Django Advanced Concepts</button>
-                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'pythonanywhere')">9. Pythonanywhere</button>
+                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'introduction')">1.Đề cương pháp luật đại cương</button>
+                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'setup')">2. câu hỏi trắc nghiệm</button>
+                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'django-basic')">3. Đề thi 1</button>
+                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'django-advanced')">4. Đề thi 2</button>
+                    <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'pythonanywhere')">9. Đề thi 3</button>
                     <button class="py-2 px-4 text-left text-slate-600 hover:bg-blue-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-blue-500 focus:text-white" onclick="changeTab(event, 'syllabus')">Syllabus</button>
                 </div>
             </div>
@@ -27,14 +27,14 @@
                 <!-- Tab content will be loaded here -->
                 <div id="tabContent" class="mt-4">
                     <iframe src="docs/Ôn tập PLĐC.pdf" class="w-full h-96 lg:h-[550px]" id="docxViewer" frameborder="0"></iframe>
+                    <div class="flex justify-end mt-10">
+                         <a class="p-2 bg-blue-500 rounded-md text-white hover:bg-blue-600" href="index.html">Back to list</a>
+                   </div>
                 </div>
             </div>
+           
         </div>
-        <div>
-            <button class="p-2 bg-blue-500 rounded-md">
-                    <a href="share.html">Back to list</a>
-            </button>
-       </div>
+       
     </div>
     
     <script>
