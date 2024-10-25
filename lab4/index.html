@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white">
+    <header class="bg-white shadow-lg overflow-x-auto">
+        <nav class="flex space-x-2 p-2 text-sm">
+            <button onclick="showMainSection('business')" class="main-tab-btn whitespace-nowrap px-2 py-1 hover:bg-gray-200 rounded">Business Operations</button>
+            <button onclick="showMainSection('cloud')" class="main-tab-btn whitespace-nowrap px-2 py-1 hover:bg-gray-200 rounded">Cloud Computing</button>
+            <button onclick="showMainSection('cyber')" class="main-tab-btn whitespace-nowrap px-2 py-1 hover:bg-gray-200 rounded">Cybersecurity</button>
+            <button onclick="showMainSection('data')" class="main-tab-btn whitespace-nowrap px-2 py-1 hover:bg-gray-200 rounded">Data Science</button>
+            <button onclick="showMainSection('dev')" class="main-tab-btn whitespace-nowrap px-2 py-1 hover:bg-gray-200 rounded">Development</button>
+            <button onclick="showMainSection('it')" class="main-tab-btn whitespace-nowrap px-2 py-1 hover:bg-gray-200 rounded">IT Operations</button>
+            <button onclick="showMainSection('lang')" class="main-tab-btn whitespace-nowrap px-2 py-1 hover:bg-gray-200 rounded">Language Learning</button>
+            <button onclick="showMainSection('leadership')" class="main-tab-btn whitespace-nowrap px-2 py-1 hover:bg-gray-200 rounded">Leadership & Management</button>
+            <button onclick="showMainSection('marketing')" class="main-tab-btn whitespace-nowrap px-2 py-1 hover:bg-gray-200 rounded">Marketing</button>
+        </nav>
+    </header>
+
+    <main class=" bg-gray-100">
+        <div class="flex items-center mt-6 mb-8  h-36 w-sceen">
+            <div class="w-28 p-4">
+                <img class="rounded-full" src="./img/unnamed.png" alt="">
+            </div>
+            <div>
+                <h1 class="text-2xl font-semibold">Welcome back,Nguyễn Đình Hiếu</h1>
+                <a href="#" class="text-indigo-600 text-sm">Add occupation and interests</a>
+            </div>
+        </div>
+        <section id="business" class="main-section bg-white p-4 w-screen">
+           
+
+            <div class=" items-center p-4 mb-8  lg:h-[25vh] md:h-auto border-solid border-gray-300 border-2 grid lg:grid-cols-3 ">
+               <div>
+                <h2 class="text-3xl font-semibold mb-2">Weekly streak</h2>
+                <p class="text-gray-600 b-4">One ring down, one to go. Keep it up!</p>
+              
+               </div>
+              
+               <div class="flex items-center mr-[20vw]">
+                <div class="rounded-full mr-2">
+                    <svg class="w-12 text-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                        <path fill-rule="evenodd" d="M13.5 4.938a7 7 0 1 1-9.006 1.737c.202-.257.59-.218.793.039.278.352.594.672.943.954.332.269.786-.049.773-.476a5.977 5.977 0 0 1 .572-2.759 6.026 6.026 0 0 1 2.486-2.665c.247-.14.55-.016.677.238A6.967 6.967 0 0 0 13.5 4.938ZM14 12a4 4 0 0 1-4 4c-1.913 0-3.52-1.398-3.91-3.182-.093-.429.44-.643.814-.413a4.043 4.043 0 0 0 1.601.564c.303.038.531-.24.51-.544a5.975 5.975 0 0 1 1.315-4.192.447.447 0 0 1 .431-.16A4.001 4.001 0 0 1 14 12Z" clip-rule="evenodd" />
+                      </svg>                              
+                </div>
+                <span><strong>2</strong> weeks<br>Current streak</span>
+              </div>
+                <div class="flex justify-end items-center sm:justify-start">
+                    <div class="flex items-center sm:items-start ">
+                        <div class=" flex items-center justify-center w-14 h-14 rounded-full border-[6px] border-orange-500 border-r-gray-300 mr-2">
+                            <div class="ml-2 w-8 h-8 rounded-full border-[6px] border-green-500 border-r-gray-300 mr-2"></div>
+                        </div>
+                        <div>
+                            <div class="text-orange-500">11/30 course min</div>
+                            <div class="text-green-500">4/1 visit</div>
+                            <div class="text-gray-500">Oct 13 - 19</div>
+                        </div>
+                    </div>
+                   
+                    <div>
+                        <a href="#" class="text-indigo-600 text-sm mt-4 block">See all activity</a>
+                    </div>
+                </div>
+               
+            </div>
+
+            <section>
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-3xl font-semibold">Pick up where you left off</h2>
+                    <a href="courseList.html" class="text-indigo-600">My learning(more lesson)</a>
+                </div>
+                <div class="flex space-x-4 mb-4">
+                    <button onclick="showSubSection('courses')" class="sub-tab-btn font-semibold">Courses</button>
+                    <button onclick="showSubSection('paths')" class="sub-tab-btn text-gray-500">Learning paths</button>
+                    <button onclick="showSubSection('cert')" class="sub-tab-btn text-gray-500">Certification preparation</button>
+                </div>
+                <div id="courses" class="sub-section">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ls-3 gap-4 ">
+                        <div class="bg-white shadow overflow-hidden grid grid-cols-3 border-slate-500 lg:h-[200px] sm:h-40 hover:scale-105 transition duration-300">
+                            <div>
+                                <img class="h-full object-cover" src="./img/1092805-tech.webp" alt="Course thumbnail" >
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold">1. Introduction</h3>
+                                <p class="text-sm text-gray-500">Lecture • 1m</p>
+                            </div>
+                            <div class="flex justify-end p-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                                    <path d="M3 10a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM8.5 10a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM15.5 8.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" />
+                                  </svg>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow overflow-hidden grid grid-cols-3 border-slate-500 lg:h-[200px] sm:h-40 hover:scale-105 transition duration-300">
+                            <div>
+                                <img class="h-full object-cover" src="./img/núi.avif" alt="Course thumbnail" >
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold">7. Quiz</h3>
+                                <p class="text-sm text-gray-500">Quiz • 6m</p>
+                            </div>
+                            <div class="flex justify-end p-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                                    <path d="M3 10a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM8.5 10a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM15.5 8.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" />
+                                  </svg>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow overflow-hidden grid grid-cols-3 border-slate-500 lg:h-[200px] sm:h-40 hover:scale-105 transition duration-300">
+                            <div>
+                                <img class="h-full object-cover" src="./img/quizizz-tao-cau-hoi-thumbnail.jpg" alt="Course thumbnail" >
+                            </div>
+                            <div class="p-4 w-full flex justify-around">
+                                <div>
+                                    <h3 class="font-semibold">2. Intergration Introduction</h3>
+                                    <p class="text-sm text-gray-500">Lecture • 15m</p>
+                                </div>
+                               
+                            </div>
+                             
+                            <div class="flex justify-end p-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                                    <path d="M3 10a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM8.5 10a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM15.5 8.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" />
+                                  </svg>
+                            </div>
+                        </div>
+                </div>
+                <div id="paths" class="sub-section hidden">
+                    <h3 class="text-xl font-semibold mb-4">Learning Paths</h3>
+                    <p>Content for Learning Paths goes here.</p>
+                </div>
+                <div id="cert" class="sub-section hidden">
+                    <h3 class="text-xl font-semibold mb-4">Certification Preparation</h3>
+                    <p>Content for Certification Preparation goes here.</p>
+                </div>
+            </section>
+        </section>
+
+        <section id="cloud" class="main-section hidden">
+            <h2 class="text-2xl font-semibold mb-4">Cloud Computing</h2>
+            <p>Content for Cloud Computing goes here.</p>
+        </section>
+
+        <section id="cyber" class="main-section hidden">
+            <h2 class="text-2xl font-semibold mb-4">Cybersecurity</h2>
+            <p>Content for Cybersecurity goes here.</p>
+        </section>
+
+        <section id="data" class="main-section hidden">
+            <h2 class="text-2xl font-semibold mb-4">Data Science</h2>
+            <p>Content for Data Science goes here.</p>
+        </section>
+
+        <section id="dev" class="main-section hidden">
+            <h2 class="text-2xl font-semibold mb-4">Development</h2>
+            <p>Content for Development goes here.</p>
+        </section>
+
+        <section id="it" class="main-section hidden">
+            <h2 class="text-2xl font-semibold mb-4">IT Operations</h2>
+            <p>Content for IT Operations goes here.</p>
+        </section>
+
+        <section id="lang" class="main-section hidden">
+            <h2 class="text-2xl font-semibold mb-4">Language Learning</h2>
+            <p>Content for Language Learning goes here.</p>
+        </section>
+
+        <section id="leadership" class="main-section hidden">
+            <h2 class="text-2xl font-semibold mb-4">Leadership & Management</h2>
+            <p>Content for Leadership & Management goes here.</p>
+        </section>
+
+        <section id="marketing" class="main-section hidden">
+            <h2 class="text-2xl font-semibold mb-4">Marketing</h2>
+            <p>Content for Marketing goes here.</p>
+        </section>
+    </main>
+
+    <script>
+        function showMainSection(sectionId) {
+            // Hide all main sections
+            document.querySelectorAll('.main-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Show the selected main section
+            document.getElementById(sectionId).classList.remove('hidden');
+
+            // Update active main tab
+            document.querySelectorAll('.main-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-gray-200');
+            });
+            event.target.classList.add('bg-gray-200');
+        }
+
+        function showSubSection(sectionId) {
+            // Hide all sub sections
+            document.querySelectorAll('.sub-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Show the selected sub section
+            document.getElementById(sectionId).classList.remove('hidden');
+
+            // Update active sub tab
+            document.querySelectorAll('.sub-tab-btn').forEach(btn => {
+                btn.classList.remove('font-semibold');
+                btn.classList.add('text-gray-500');
+            });
+            event.target.classList.remove('text-gray-500');
+            event.target.classList.add('font-semibold');
+        }
+
+        // Show the business section and courses sub-section by default
+        showMainSection('business');
+        showSubSection('courses');
+    </script>
+</body>
+</html>
