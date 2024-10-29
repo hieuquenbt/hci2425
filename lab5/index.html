@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Learning Dashboard</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet">
+    </head>
+    <body class="bg-gray-100">
+        <div class="relative min-h-screen">
+            <!-- Header -->
+            <header class="bg-gray-800 text-white p-6">
+                <div class="container mx-auto">
+                    <h1 class="text-3xl font-bold mb-4">My learning</h1>
+                    <div class="flex items-center gap-2 text-sm">
+                        <span>87hr 36min watched</span>
+                        <i class="fas fa-info-circle"></i>
+                        <a href="#" class="text-gray-300 hover:text-white">View
+                            all activity</a>
+                    </div>
+                    <div
+                        class="lg:hidden mt-2 sm:flex md:flex flex justify-end">
+                        <button type="button" id="btnHide"
+                            onclick="showHeader('navMobile')"
+                            class="relative inline-flex items-center justify-center rounded-md bg-blue-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                            aria-controls="mobile-menu" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20" fill="currentColor"
+                                class="size-5">
+                                <path fill-rule="evenodd"
+                                    d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75ZM2 10a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Navigation Tabs -->
+                    <nav class="hidden mt-4 lg:flex">
+                        <ul class="lg:flex gap-6 border-b border-gray-700 ">
+                            <li onclick="changeBorder('allcourses')"
+                                id="allcourses" data-tab="all-courses"
+                                class="cursor-pointer pb-2 border-b-2 border-white">All
+                                courses</li>
+                            <li onclick="changeBorder('learningpaths')"
+                                id="learningpaths" data-tab="learning-paths"
+                                class="cursor-pointer pb-2 hover:border-b-2 hover:border-gray-300">Learning
+                                paths</li>
+                            <li onclick="changeBorder('certifications')"
+                                id="certifications" data-tab="certifications"
+                                class="cursor-pointer pb-2 hover:border-b-2 hover:border-gray-300">Certifications</li>
+                            <li onclick="changeBorder('archived')" id="archived"
+                                data-tab="archived"
+                                class="cursor-pointer pb-2 hover:border-b-2 hover:border-gray-300">Archived</li>
+                            <li onclick="changeBorder('learningtools')"
+                                id="learningtools" data-tab="learning-tools"
+                                class="cursor-pointer pb-2 hover:border-b-2 hover:border-gray-300">Learning
+                                tools</li>
+                        </ul>
+                    </nav>
+
+                    <div class="hidden" id="navMobile">
+                        <!-- nav for mobile screen -->
+                        <nav class="mt-4">
+                            <ul class="lg:flex gap-6 border-b border-gray-700 ">
+                                <li onclick="changeBorder('allcourses')"
+                                    id="allcourses" data-tab="all-courses"
+                                    class="cursor-pointer pb-2 border-b-2 border-white">All
+                                    courses</li>
+                                <li onclick="changeBorder('learningpaths')"
+                                    id="learningpaths" data-tab="learning-paths"
+                                    class="cursor-pointer pb-2 hover:border-b-2 hover:border-gray-300">Learning
+                                    paths</li>
+                                <li onclick="changeBorder('certifications')"
+                                    id="certifications"
+                                    data-tab="certifications"
+                                    class="cursor-pointer pb-2 hover:border-b-2 hover:border-gray-300">Certifications</li>
+                                <li onclick="changeBorder('archived')"
+                                    id="archived" data-tab="archived"
+                                    class="cursor-pointer pb-2 hover:border-b-2 hover:border-gray-300">Archived</li>
+                                <li onclick="changeBorder('learningtools')"
+                                    id="learningtools" data-tab="learning-tools"
+                                    class="cursor-pointer pb-2 hover:border-b-2 hover:border-gray-300">Learning
+                                    tools</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+           
+            <!-- Main Content -->
+            <main class="container mx-auto p-6 ">
+                <!-- All Courses Section -->
+                <section id="all-courses" class="tab-content">
+                    <div class="relative mb-8">
+
+                        <!-- filter when large -->
+                        <div class="absolute hidden">
+                            <!-- Sort Dropdown -->
+                            <div class="relative">
+                                <button
+                                    class=" px-4 py-2 border rounded-md flex items-center gap-2 bg-white">
+                                    Recently Accessed
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+
+                            <!-- Categories Dropdown -->
+                            <div class="relative">
+                                <button
+                                    class="px-4 py-2 border rounded-md flex items-center gap-2 bg-white">
+                                    Categories
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+
+                            <!-- Progress Dropdown -->
+                            <div class="relative">
+                                <button
+                                    class="px-4 py-2 border rounded-md flex items-center gap-2 bg-white">
+                                    Progress
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+
+                            <!-- Instructor Dropdown -->
+                            <div class="relative">
+                                <button
+                                    class="px-4 py-2 border rounded-md flex items-center gap-2 bg-white">
+                                    Instructor
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+
+                            <!-- Reset Button -->
+                            <div>
+                                <button
+                                    class="px-4 py-2 text-gray-500 hover:text-gray-700">Reset</button>
+                            </div>
+                        </div>
+
+                        <div class="relative lg:hidden p-4 lg:w-48 sm:w-40 flex mr-40">
+                            <input type="text" placeholder="Search my courses"
+                                class="pl-4 pr-10 py-2 border rounded-md ">
+                            <div
+                                class="absolute inset-y-0 left-48 pl-3 flex items-center pointer-events-none ml-2">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor"
+                                    class="size-5">
+                                    <path fill-rule="evenodd"
+                                        d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- filter button -->
+                        <div class="lg:hidden flex justify-end">
+                            <div class="shadow-lg  m-4 rounded-lg">
+                                <button id="filerBtn" onclick="showHeader('fiterDiv')">
+                                    <svg class="w-6 m-2"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor"
+                                    class="size-5">
+                                    <path
+                                        d="M10 3.75a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM17.25 4.5a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM5 3.75a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 .75.75ZM4.25 17a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM17.25 17a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM9 10a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1 0-1.5h5.5A.75.75 0 0 1 9 10ZM17.25 10.75a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM14 10a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM10 16.25a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z" />
+                                </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Filters -->
+                        <div
+                            class="hidden lg:flex lg:justify-between lg:items-center mb-8">
+                            <div class="lg:flex sm:gap-4 md:hidden sm:hidden">
+                                <!-- Sort Dropdown -->
+                                <div class="relative">
+                                    <button
+                                        class=" px-4 py-2 border rounded-md flex items-center gap-2 bg-white">
+                                        Recently Accessed
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Categories Dropdown -->
+                                <div class="relative">
+                                    <button
+                                        class="px-4 py-2 border rounded-md flex items-center gap-2 bg-white">
+                                        Categories
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Progress Dropdown -->
+                                <div class="relative">
+                                    <button
+                                        class="px-4 py-2 border rounded-md flex items-center gap-2 bg-white">
+                                        Progress
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Instructor Dropdown -->
+                                <div class="relative">
+                                    <button
+                                        class="px-4 py-2 border rounded-md flex items-center gap-2 bg-white">
+                                        Instructor
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Reset Button -->
+                                <div>
+                                    <button
+                                        class="px-4 py-2 text-gray-500 hover:text-gray-700">Reset</button>
+                                </div>
+                            </div>
+                            
+                            <div class="relative  p-4 w-48 flex mr-40">
+                                <input type="text"
+                                    placeholder="Search my courses"
+                                    class="pl-4 pr-10 py-2 border rounded-md ">
+                                <div
+                                    class="absolute inset-y-0 right-0 pl-3 flex justify-end items-center pointer-events-none ml-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20" fill="currentColor"
+                                        class="size-5">
+                                        <path fill-rule="evenodd"
+                                            d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- filter mobile -->
+                        <div class="lg:shadow-none  shadow-lg rounded-lg h-52 w-full m-2" >
+                            <div
+                            class="lg:hidden mb-8 hidden" id="fiterDiv">
+                            <div class="lg:flex sm:gap-4 md:hidden sm:hidden m-4">
+                                <!-- Sort Dropdown -->
+                                <div class="relative">
+                                    <button
+                                        class=" px-4 py-2 border rounded-md flex items-center gap-2 bg-white">
+                                        Recently Accessed
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Categories Dropdown -->
+                                <div class="relative">
+                                    <button
+                                        class="px-4 py-2 border rounded-md flex items-center gap-2 bg-white">
+                                        Categories
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Progress Dropdown -->
+                                <div class="relative">
+                                    <button
+                                        class="px-4 py-2 border rounded-md flex items-center gap-2 bg-white">
+                                        Progress
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Instructor Dropdown -->
+                                <div class="relative">
+                                    <button
+                                        class="px-4 py-2 border rounded-md flex items-center gap-2 bg-white">
+                                        Instructor
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Reset Button -->
+                                <div>
+                                    <button
+                                        class="px-4 py-2 text-gray-500 hover:text-gray-700">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Course Card 1 -->
+                            <div
+                                class="bg-white rounded-lg shadow overflow-hidden">
+                                <div class="relative">
+                                    <img src="img/1092805-tech.webp"
+                                        alt="ISMS Training"
+                                        class="w-full h-48 object-cover">
+                                    <button
+                                        class="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full">
+                                        <i
+                                            class="fas fa-ellipsis-v text-gray-600 w-6"></i>
+                                    </button>
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="font-semibold mb-2">FPT ISMS
+                                        Refresh Training S2 2024
+                                        (Vietnamese)</h3>
+                                    <p class="text-sm text-gray-600 mb-2">FSOFT
+                                        Content Development</p>
+                                    <div
+                                        class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">100%
+                                            complete</span>
+                                        <div class="flex gap-1">
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Course Card 2 -->
+                            <div
+                                class="bg-white rounded-lg shadow overflow-hidden">
+                                <div class="relative">
+                                    <img src="img/núi.avif"
+                                        alt="Spring Boot"
+                                        class="w-full h-48 object-cover">
+                                    <button
+                                        class="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full">
+                                        <i
+                                            class="fas fa-ellipsis-v text-gray-600 w-6"></i>
+                                    </button>
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="font-semibold mb-2">The Complete
+                                        Spring Boot Development Bootcamp</h3>
+                                    <p class="text-sm text-gray-600 mb-2">Learn
+                                        The Part Inc., Rayan Slim</p>
+                                    <div
+                                        class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">100%
+                                            complete</span>
+                                        <div class="flex gap-1">
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Course Card 3 -->
+                            <div
+                                class="bg-white rounded-lg shadow overflow-hidden">
+                                <div class="relative">
+                                    <img
+                                        src="img/quizizz-tao-cau-hoi-thumbnail.jpg"
+                                        alt="MuleSoft"
+                                        class="w-full h-48 object-cover">
+                                    <button
+                                        class="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full">
+                                        <i
+                                            class="fas fa-ellipsis-v text-gray-600 w-6"></i>
+                                    </button>
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="font-semibold mb-2">MuleSoft 4.X
+                                        Complete Guide For Beginners</h3>
+                                    <p class="text-sm text-gray-600 mb-2">Chinna
+                                        Reddy</p>
+                                    <div
+                                        class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">1%
+                                            complete</span>
+                                        <div class="flex gap-1">
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                            <i
+                                                class="far fa-star text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Course Card 4 -->
+                            <div
+                                class="bg-white rounded-lg shadow overflow-hidden">
+                                <div class="relative">
+                                    <img src="img/images.png"
+                                        alt="English Vocabulary"
+                                        class="w-full h-48 object-cover">
+                                    <button
+                                        class="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full">
+                                        <i
+                                            class="fas fa-ellipsis-v text-gray-600 w-6"></i>
+                                    </button>
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="font-semibold mb-2">English
+                                        Vocabulary: 504 Essential Words</h3>
+                                    <p class="text-sm text-gray-600 mb-2">Mister
+                                        Rabiey</p>
+                                    <div
+                                        class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">15%
+                                            complete</span>
+                                        <div class="flex gap-1 text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Learning Paths Section -->
+                    <section id="learning-paths" class="tab-content hidden">
+                        <div class="grid grid-cols-2 gap-4 w-full max-w-4xl">
+                            <!-- First Tab -->
+                            <div
+                                class="border rounded-lg shadow-sm p-4 bg-white">
+                                <div class="flex items-center mb-2">
+                                    <img src="https://via.placeholder.com/20"
+                                        alt="Logo" class="mr-2" />
+                                    <p
+                                        class="text-sm font-semibold text-gray-600">Learning
+                                        path</p>
+                                </div>
+                                <h2 class="text-lg font-bold">Induction
+                                    Training_GAAFOFY (VI)</h2>
+                                <p class="text-sm text-gray-500 mt-1">1 of 6
+                                    items complete</p>
+                                <div class="w-full h-1 bg-gray-200 mt-3">
+                                    <div class="h-full bg-purple-600"
+                                        style="width: 16.66%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Second Tab -->
+                            <div
+                                class="border rounded-lg shadow-sm p-4 bg-white">
+                                <div class="flex items-center mb-2">
+                                    <img src="https://via.placeholder.com/20"
+                                        alt="Logo" class="mr-2" />
+                                    <p
+                                        class="text-sm font-semibold text-gray-600">Learning
+                                        path</p>
+                                </div>
+                                <h2 class="text-lg font-bold">Induction Training
+                                    for BO_IT_Mandatory (VI)</h2>
+                                <p class="text-sm text-gray-500 mt-1">9 of 9
+                                    items complete</p>
+                                <div class="w-full h-1 bg-gray-200 mt-3">
+                                    <div class="h-full bg-purple-600"
+                                        style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Certifications Section -->
+                    <section id="certifications" class="tab-content hidden">
+                        <div class="text-center py-8">
+                            <h2
+                                class="text-2xl font-bold mb-4">Certifications</h2>
+                            <p class="text-gray-600">Professional certifications
+                                and credentials</p>
+                            <!-- Add your certifications content here -->
+                        </div>
+                    </section>
+
+                    <!-- Archived Section -->
+                    <section id="archived" class="tab-content hidden">
+                        <div class="text-center py-8">
+                            <h2 class="text-2xl font-bold mb-4">Archived
+                                Courses</h2>
+                            <p class="text-gray-600">Your archived learning
+                                materials</p>
+                            <!-- Add your archived content here -->
+                        </div>
+                    </section>
+
+                    <!-- Learning Tools Section -->
+                    <section id="learning-tools" class="tab-content hidden">
+                        <div class="text-center py-8">
+                            <h2 class="text-2xl font-bold mb-4">Learning
+                                Tools</h2>
+                            <p class="text-gray-600">Resources and tools to
+                                enhance your learning</p>
+                            <!-- Add your learning tools content here -->
+                        </div>
+                    </section>
+                </main>
+            </div>
+
+            <script>
+         const tabs = document.querySelectorAll('nav ul li');
+         function changeBorder(tabsId){
+                tabs.forEach(tab => {  
+                    console.log('hi');
+                    tab.classList.remove('border-b-2');
+                    if(tab.id === tabsId){
+                        tab.classList.add('border-b-2');
+                    }
+                });
+
+            }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all tabs and content sections
+           
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+           
+            // Function to switch tabs
+            function switchTab(tabId) {
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                console.log('hi');
+                // Remove active class from all tabs
+               
+
+                // Show selected tab content
+                const selectedContent = document.getElementById(tabId);
+                if (selectedContent) {
+                    selectedContent.classList.remove('hidden');
+                }
+
+                // Add active class to selected tab
+                const selectedTab = document.querySelector(`[data-tab="${tabId}"]`);
+                if (selectedTab) {
+                    selectedTab.classList.add('border-white');
+                    selectedTab.classList.remove('hover:border-gray-300');
+                }
+            }
+
+            // Add click handlers for tabs
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+
+            // Initialize first tab as active
+            switchTab('all-courses');
+        });
+        let btn = document.getElementById('btnHide');
+        let control = 0;
+        function showHeader(id) {
+            let navTabs = document.getElementById(id);
+            if (control === 0) {
+                navTabs.classList.remove('hidden');
+                navTabs.classList.add('block');
+                control = 1;
+            }
+            else {
+                navTabs.classList.remove('block');
+                navTabs.classList.add('hidden');
+                control = 0;
+            }
+        }
+        // btn.addEventListener('click', showHeader('navMobile'));
+        let filerButton = document.getElementById('filerBtn');
+        let controlFilter = 0;
+        function showFilter(id) {
+            let filter = document.getElementById('id');
+            if (controlFilter === 0) {
+                filter.classList.remove('hidden');
+                filter.classList.add('block');
+                controlFilter = 1;
+            }
+            else {
+                filter.classList.remove('block');
+                filter.classList.add('hidden');
+                controlFilter = 0;
+            }
+        }
+    </script>
+        </body>
+    </html>
