@@ -1,55 +1,49 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hci2425</title>
-    <link rel="stylesheet" href="style.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>hci2425</title>
+        <link rel="stylesheet" href="style.css">
 
-</head>
-<body>
-    <nav>
-        <ul class="menu">
-            <li><a href="#" class="active" id="home-link">Home</a></li>
-            <li><a href="#" id="about-link">About</a></li>
-            <li><a href="#" id="labs-link">Labs</a></li>
-        </ul>
-    </nav>
-    <div class="homePage lab-content active" id="homePage">
-        <h1>Welcome to Hieu's labs</h1>
-        <p>Where I prepare my Labs</p>
-    </div>
- 
+    </head>
+    <body>
+        <nav>
+            <ul class="menu">
+                <li><a href="#" class="active" id="home-link">Home</a></li>
+                <li><a href="#" id="about-link">About</a></li>
+                <li><a href="#" id="labs-link">Labs</a></li>
+            </ul>
+        </nav>
+        <div class="homePage lab-content active" id="homePage">
+        </div>
 
-   <div class="about-div">
-         <div id="main-iframe" class="in-about">
-            <iframe class="in-about" src="about.html" width="60%" height="350px"></iframe>
-         </div>
-   </div>
-   <div class="secondary-nav" id="secondary-nav">
-    <a href="lab1.html" onclick="showPage('html')">Lab1</a>
-    <a href="lab2/login.html" onclick="showPage('css')" >Lab2</a>
-    <a href="lab3/index.html" >Lab3</a>
-    <a href="lab4/index.html" >Lab4</a>
-    <a href="lab5/index.html" >Lab5</a>
-    <a href="lab6/index.html">Lab6</a>
-    <a href="#howto" >Lab7</a>
-    <a href="#w3css" >Lab8</a>
-    <a href="#c"  >Lab9</a>
-</div>
-    <div class="labs-section" id="labs-section" style="display:none;">
-        
-       
-        <div class="lab-content active" id="lab1">
-            <h2>Lab 1</h2>
-            <div class="about-div">
-                <iframe src="lab1.html" width="60%" height="350px"></iframe>
+        <div class="about-div">
+            <div id="main-iframe" class="in-about">
+                
+                
+
             </div>
         </div>
-       
-       
-    </div>
+        <div class="secondary-nav" id="secondary-nav">
+            <a href="lab1.html">Lab1</a>
+            <a href="lab2/login.html">Lab2</a>
+            <a href="lab3/index.html">Lab3</a>
+            <a href="lab4/index.html">Lab4</a>
+            <a href="lab5/index.html">Lab5</a>
+            <a href="lab6/index.html">Lab6</a>
+        </div>
+        <div class="labs-section" id="labs-section" style="display:none;">
 
-    <script src="script.js"></script>
-</body>
+            <div class="lab-content active" id="lab1">
+                <h2>Lab 1</h2>
+                <div class="about-div">
+                    <iframe src="lab1.html" width="60%" height="350px"></iframe>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="script.js"></script>
+    </body>
 </html>

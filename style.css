@@ -32,11 +32,11 @@ nav {
     border-radius: 5px;
 }
 
-.menu li a:hover {
+.menu li button:hover {
     background-color: #34495e;
 }
 
-.menu li a.active {
+.menu li button.active {
     background-color: #3498db;
 }
 
