@@ -24,7 +24,7 @@ nav {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 20px 20px;
     transition: all 0.3s ease;
     cursor: pointer;
     border-radius: 5px;
@@ -339,9 +339,7 @@ a:hover {
 
 }
 
-.menu {
-    margin-left: 20vh;
-}
+
 
 .vdo {
     position: absolute;
@@ -370,10 +368,7 @@ a:hover {
 }
 
 @media only screen and (max-width: 1500px) {
-    .menu {
-        margin-left: 20vh;
-
-    }
+    
 }
 
 
